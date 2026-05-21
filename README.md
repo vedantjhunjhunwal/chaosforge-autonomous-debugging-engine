@@ -1,205 +1,170 @@
-# Occupancy AI Agent — LangGraph Workplace Occupancy Intelligence Platform
+# ChaosForge — Autonomous Debugging & Reliability Engine
 
-> A full-stack AI occupancy intelligence product that uses YOLO computer vision, spatial person-chair reasoning, temporal smoothing, LangGraph-orchestrated AI agents, and optional LLM insights to convert workplace videos into occupancy events, annotated outputs, CSV metrics, and executive-ready reports.
+> A production-style autonomous debugging app that attacks executable software targets, detects runtime failures, maps crashes to source code, generates patch/test artifacts, validates fixes through Monte Carlo CI, and produces PR-ready reports for human review.
 
 ---
 
-## What is Occupancy AI Agent?
+## What is ChaosForge?
 
-Occupancy AI Agent is a **computer vision + AI agent platform for workplace seat occupancy analytics**.
+ChaosForge is an **autonomous debugging and reliability engine**.
 
 In simple words:
 
-Imagine an office, classroom, meeting room, lab, or shared workspace where you want to know:
+Imagine you have a backend function, CLI program, API service, C/C++ binary, Java program, Python app, or any executable system.
 
-1. Which chairs are being used?
-2. When did a person sit down?
-3. How long was each chair occupied?
-4. Which detections look reliable?
-5. Which results need review?
-6. What does the occupancy pattern mean for a non-technical user?
+Normally, when it fails, an engineer has to:
 
-Normally, an engineer or analyst would have to:
+1. Reproduce the bug.
+2. Try edge-case inputs.
+3. Read the stack trace.
+4. Find the broken file.
+5. Patch the code.
+6. Write a regression test.
+7. Run the test many times.
+8. Check if the fix is stable.
+9. Write a PR summary.
 
-1. Run a computer vision model manually.
-2. Detect people and chairs.
-3. Check overlap frame by frame.
-4. Smooth noisy detections.
-5. Export CSV files.
-6. Review errors manually.
-7. Explain results to business teams.
-8. Create reports for managers.
+ChaosForge automates this workflow.
 
-Occupancy AI Agent automates this workflow.
+It acts like an autonomous debugging teammate that can:
 
-It acts like an intelligent occupancy-analysis teammate that can:
+- Generate adversarial inputs.
+- Run the target program in a sandbox.
+- Detect crashes, timeouts, bad exits, and test failures.
+- Map failures back to source files.
+- Generate patch artifacts.
+- Generate regression test artifacts.
+- Run repeated Monte Carlo CI validation.
+- Produce a PR-style report for a human engineer.
 
-- Detect chairs from video.
-- Detect people using YOLO segmentation.
-- Learn static chair locations.
-- Track person-chair interaction over time.
-- Apply temporal smoothing to reduce noisy switching.
-- Generate annotated output videos.
-- Produce occupancy summary CSV files.
-- Produce frame-level metrics CSV files.
-- Run LangGraph AI agents over the generated evidence.
-- Diagnose failures and low-quality outputs.
-- Detect anomalies and unstable occupancy behavior.
-- Recommend threshold tuning without changing the core algorithm.
-- Generate human-readable reports.
-- Optionally use Gemini/OpenAI-compatible LLMs for executive insights.
-
-This project is designed as an **AI Agent + Computer Vision + Full-Stack Product + Workplace Analytics project**.
+This project is designed as an **AI Agent + Software Engineering + Testing Infrastructure project**.
 
 ---
 
 ## Why This Project Matters
 
-Modern workplaces need better space utilization.
+Modern software fails in many hidden ways.
 
-Poor occupancy visibility can cause:
+A small bug can cause:
 
-- Unused office space
-- Overcrowded seating zones
-- Inefficient facility planning
-- Manual seat audits
-- Inaccurate workplace utilization reports
-- Poor meeting-room and classroom planning
-- Lack of real-time decision support
+- Division-by-zero crashes
+- Invalid input failures
+- Runtime exceptions
+- Segmentation faults
+- Timeout failures
+- Incorrect edge-case behavior
+- Flaky tests
+- Broken CLI/API workflows
+- Poor reliability under stress
 
-A basic computer vision script only detects objects.
+Traditional AI projects only generate code from prompts.
 
-Occupancy AI Agent goes further.
+ChaosForge goes further.
 
-It connects real video processing with an AI-agent reliability layer:
+It connects AI-style reasoning with real engineering execution:
 
-- YOLO-based visual perception
-- Chair-layout calibration
-- Person-chair spatial reasoning
-- Temporal smoothing
-- Event logging
-- Quality scoring
-- Anomaly detection
-- Failure diagnosis
-- Threshold recommendation
-- LLM-powered explanation
-- Full-stack upload and dashboard workflow
+- Fuzzing
+- Sandboxed execution
+- Crash analysis
+- Source-code scanning
+- Patch generation
+- Test generation
+- CI-style repeated validation
+- PR artifact creation
 
-This makes the project closer to a real AI engineering product, not just a notebook or demo script.
+This makes the project closer to how real developer tooling and reliability systems work.
 
 ---
 
 ## Core Idea
 
 ```text
-Input Workplace Video
-        ↓
-YOLO Segmentation Engine
-        ↓
-Chair Layout Calibration
-        ↓
-Person Detection Per Frame
-        ↓
-Person-Chair Spatial Reasoning
-        ↓
-Temporal Smoothing
-        ↓
-Occupancy Event Logging
-        ↓
-CSV Metrics + Output Video
-        ↓
-LangGraph AI Agent Workflow
-        ↓
-Quality Score + Diagnosis + Anomaly Insights + LLM Report
-        ↓
-Full-Stack Dashboard
+Target Program
+      ↓
+Adversary Agent
+      ↓
+Fuzzing Sandbox
+      ↓
+Crash Check Router
+      ↓
+Code Surgeon
+      ↓
+Monte Carlo CI Sandbox
+      ↓
+Flake Check Router
+      ↓
+Final Compiler
+      ↓
+PR-ready Report
 ```
 
-Occupancy AI Agent does not blindly ask an LLM to detect occupancy.
+ChaosForge does not blindly generate code.
 
-The core occupancy decision is handled by deterministic computer vision logic:
+It follows a structured, verification-based workflow:
 
-1. Detect static chairs.
-2. Detect people.
-3. Check person-chair overlap.
-4. Filter false sitting cases.
-5. Apply temporal smoothing.
-6. Log state changes.
-
-The LangGraph agent layer runs after the vision pipeline and reviews the generated evidence.
+1. Understand the target contract.
+2. Generate extreme inputs.
+3. Execute the target.
+4. Capture failure evidence.
+5. Map crash evidence to code.
+6. Generate a patch artifact.
+7. Generate a regression test artifact.
+8. Run the validation repeatedly.
+9. Produce a final PR report.
 
 ---
 
 ## Architecture
 
 ```text
- [ User Uploads Video from Flask Dashboard ]
-                         │
-                         ▼
- ┌───────────────────────────────────────────────────────┐
- │ Flask Full-Stack App                                  │
- │ apps.py + HTML templates + CSS dashboard              │
- └───────────────────────┬───────────────────────────────┘
-                         │
-                         ▼
- ┌───────────────────────────────────────────────────────┐
- │ Pipeline Controller                                   │
- │ Creates job, stores upload, starts background worker   │
- └───────────────────────┬───────────────────────────────┘
-                         │
-                         ▼
- ┌───────────────────────────────────────────────────────┐
- │ YOLO Occupancy Engine                                 │
- │ Loads model, detects chairs and people, processes video│
- └───────────────────────┬───────────────────────────────┘
-                         │
-                         ▼
- ┌───────────────────────────────────────────────────────┐
- │ Chair Calibration                                     │
- │ Learns static chair layout from initial frames         │
- └───────────────────────┬───────────────────────────────┘
-                         │
-                         ▼
- ┌───────────────────────────────────────────────────────┐
- │ Spatial + Temporal Occupancy Logic                    │
- │ Person-chair overlap + behind-person filtering +      │
- │ temporal smoothing                                    │
- └───────────────────────┬───────────────────────────────┘
-                         │
-                         ▼
- ┌───────────────────────────────────────────────────────┐
- │ Output Artifacts                                      │
- │ Annotated video, summary CSV, frame-level metrics CSV  │
- └───────────────────────┬───────────────────────────────┘
-                         │
-                         ▼
- ┌───────────────────────────────────────────────────────┐
- │ LangGraph Multi-Agent Workflow                        │
- │                                                       │
- │ START                                                 │
- │   ↓                                                   │
- │ Diagnosis Agent                                       │
- │   ↓                                                   │
- │ Quality Check Agent                                   │
- │   ↓                                                   │
- │ Threshold Advisor Agent                               │
- │   ↓                                                   │
- │ Anomaly Detection Agent                               │
- │   ↓                                                   │
- │ Report Generation Agent                               │
- │   ↓                                                   │
- │ Optional LLM Insight Agent                            │
- │   ↓                                                   │
- │ Final Report Builder                                  │
- │   ↓                                                   │
- │ END                                                   │
- └───────────────────────┬───────────────────────────────┘
-                         │
-                         ▼
- ┌───────────────────────────────────────────────────────┐
- │ Dashboard Results                                     │
- │ Video preview, downloads, reports, status, findings    │
- └───────────────────────────────────────────────────────┘
+ [ Input: Universal Target Contract ]
+ [ Python / Java / C / C++ / JS / Go / Rust / API / CLI / Docker / Repo ]
+                             │
+                             ▼
+  ┌────────────────────────────────────────────────────────┐
+  │ Node 1: The Adversary                                  │
+  │ Generates extreme payloads, malformed files, CLI args, │
+  │ HTTP requests, or stdin inputs                         │
+  └──────────────────────────┬─────────────────────────────┘
+                             │
+                             ▼
+  ┌────────────────────────────────────────────────────────┐
+  │ Node 2: The Fuzzing Sandbox                            │
+  │ Executes payloads against the target using its adapter:│
+  │ command / stdin / file / http / compile-run / repo-test│
+  └──────────────────────────┬─────────────────────────────┘
+                             │
+                   [ Router 1: Crash Check ]
+               /                              \
+  [ NO: Code survived ]                [ YES: Code crashed ]
+               │                                │
+               │                                ▼
+               │        ┌────────────────────────────────────────┐
+               │        │ Node 3: The Code Surgeon               │
+               │        │ Reads stderr, stack trace, timeout,    │
+               │        │ crash logs, compiler output, or failed │
+               │        │ test output. Generates patch/test      │
+               │        │ artifacts.                             │
+               │        └──────────────────┬─────────────────────┘
+               │                           │
+               │                           ▼
+               │        ┌────────────────────────────────────────┐
+               │        │ Node 4: Monte Carlo CI Sandbox         │
+               │        │ Runs validation many times concurrently│
+               │        │ to detect flakes or unstable fixes     │
+               │        └──────────────────┬─────────────────────┘
+               │                           │
+               │                 [ Router 2: Flake Check ]
+               │              /                             \
+               │ [ Failed on run #42 ]             [ 100/100 Passes ]
+               │              │                             │
+               └──────────────┘                             ▼
+                           ┌────────────────────────────────────────┐
+                           │ Node 5: Final Compiler                 │
+                           │ Outputs bug report, patch diff,        │
+                           │ regression evidence, CI summary, and   │
+                           │ PR-ready markdown artifact             │
+                           └────────────────────────────────────────┘
 ```
 
 ---
@@ -208,277 +173,178 @@ The LangGraph agent layer runs after the vision pipeline and reviews the generat
 
 | Area | Technology |
 |---|---|
-| Computer Vision | YOLO11 Segmentation / Ultralytics |
-| Video Processing | OpenCV |
-| Core Language | Python |
-| Agent Orchestration | LangGraph |
-| Agent State / Schemas | Python dataclasses / typed schemas |
-| LLM Insight Layer | Optional Gemini or OpenAI-compatible API |
-| Backend / Web App | Flask |
-| Frontend | HTML, CSS, Jinja Templates |
-| Data Processing | Pandas, NumPy |
+| Backend | Python |
+| API Layer | FastAPI |
+| CLI | argparse / Python CLI |
 | Database | SQLite |
-| Reports | JSON + Markdown |
-| Testing | pytest |
+| Auth | JWT-style local auth |
+| Contract Format | JSON |
+| Sandbox Execution | subprocess |
+| Testing | pytest / target-specific test command |
+| CI Validation | Monte Carlo repeated execution |
+| Reports | Markdown + JSON artifacts |
+| External Targets | Python, C, C++, Java, Node, Go, Rust, CLI tools, HTTP APIs |
 | Deployment | Local Python, Docker-ready structure |
-| CLI | argparse-based runner |
 
 ---
 
-## What the Project Detects
+## What ChaosForge Fixes in the Demo
 
-The system detects whether chairs are occupied in a workplace video.
+The demo target contains a common production-style bug:
 
-The core occupancy logic checks:
-
-- Chair locations
-- Person bounding boxes
-- Person masks when available
-- Person center position relative to chair
-- Person bottom position relative to chair bottom
-- Intersection over chair area
-- Temporal stability across frames
-
-Example decision flow:
-
-```text
-Person detected
-      ↓
-Person center lies inside chair width?
-      ↓
-Person is not behind the chair?
-      ↓
-Person overlaps enough chair area?
-      ↓
-Temporal counter crosses threshold?
-      ↓
-Chair marked occupied
+```python
+def calculate_margin(balance, leverage, price):
+    return balance * leverage / price
 ```
 
-The LLM does not decide whether a chair is occupied.
-
-The LLM only explains results after the deterministic vision engine has finished.
-
----
-
-## LangGraph Agent Workflow
-
-The project uses a LangGraph workflow to review the output of the computer vision engine.
+If `price = 0`, the system crashes with:
 
 ```text
-START
-  ↓
-Diagnosis Agent
-  ↓
-Quality Check Agent
-  ↓
-Threshold Advisor Agent
-  ↓
-Anomaly Detection Agent
-  ↓
-Report Generation Agent
-  ↓
-Optional LLM Insight Agent
-  ↓
-Final Report Builder
-END
+ZeroDivisionError
 ```
 
-### 1. Diagnosis Agent
+ChaosForge attacks the function with adversarial inputs, detects the crash, maps the failure to the source file, generates a patch artifact, creates a regression test artifact, runs repeated validation, and writes a PR-style report.
 
-Checks whether the pipeline produced valid outputs.
+Example hardened logic:
 
-It can identify issues such as:
-
-- No chairs detected
-- No occupancy events generated
-- Missing output video
-- Missing summary CSV
-- Missing metrics CSV
-- Processing failure
-
----
-
-### 2. Quality Check Agent
-
-Scores the reliability of the run.
-
-It reviews:
-
-- Number of processed frames
-- Chair count
-- Occupancy event count
-- Available metrics
-- Output artifact completeness
-- Warning and failure patterns
-
----
-
-### 3. Threshold Advisor Agent
-
-Provides advisory recommendations for threshold tuning.
-
-It does not automatically mutate the core algorithm.
-
-It can recommend reviewing:
-
-- Intersection ratio threshold
-- Temporal smoothing threshold
-- Confidence threshold
-- Calibration window
-
-This keeps the product reliable and explainable.
-
----
-
-### 4. Anomaly Detection Agent
-
-Finds unusual output behavior.
-
-Examples:
-
-- Chair always occupied
-- Chair never occupied
-- Too many rapid state switches
-- Empty metrics despite successful processing
-- Very low occupancy activity
-- Possible occlusion or camera-angle issue
-
----
-
-### 5. Report Generation Agent
-
-Generates structured findings for human review.
-
-The report includes:
-
-- Quality score
-- Executive summary
-- Agent findings
-- Recommendations
-- Output artifact paths
-
----
-
-### 6. Optional LLM Insight Agent
-
-When enabled, the LLM agent converts technical metrics into a human-readable business summary.
-
-It can explain:
-
-- What happened in the video
-- Whether the result looks reliable
-- Which chairs had unusual behavior
-- What a facilities or operations team should review
-- What the system did not prove
-
-The LLM is optional.
-
-If no API key is provided, the system still runs with deterministic agents.
+```python
+def calculate_margin(balance, leverage, price):
+    if price == 0:
+        return 0
+    return balance * leverage / price
+```
 
 ---
 
 ## Project Features
 
-### 1. Full-Stack Flask Dashboard
+### 1. Universal Target Contracts
 
-Run the app and upload videos from a browser.
+ChaosForge does not depend on one language.
 
-The dashboard supports:
-
-- Video upload
-- Model path input
-- Job tracking
-- Status view
-- Output video preview
-- CSV downloads
-- Agent report downloads
-- Error display
-
----
-
-### 2. YOLO-Based Occupancy Detection
-
-The core engine uses YOLO segmentation to detect:
-
-- People
-- Chairs
-
-It then applies spatial and temporal logic to detect occupancy events.
-
----
-
-### 3. Static Chair Layout Learning
-
-The system learns chair positions from the initial video frames.
-
-This allows the system to track fixed seating layouts instead of repeatedly treating every detection as a new chair.
-
----
-
-### 4. Person-Chair Spatial Reasoning
-
-The project checks whether a detected person is actually interacting with a chair.
-
-It avoids simple object detection mistakes by checking:
-
-- Horizontal chair alignment
-- Person bottom position
-- Mask overlap when available
-- Bounding-box overlap fallback
-
----
-
-### 5. Temporal Smoothing
-
-Real video detections can flicker.
-
-The system uses temporal counters to avoid marking a chair occupied or empty from a single noisy frame.
-
----
-
-### 6. Output Video Generation
-
-The app creates an annotated output video showing:
-
-- Chair boxes
-- Person boxes
-- Occupied/unoccupied visual states
-
-This helps users visually verify the result.
-
----
-
-### 7. CSV Metrics and Summary Reports
-
-The system generates:
+It can test any target that can be described with:
 
 ```text
-storage/outputs/<run_id>.mp4
-storage/outputs/<run_id>_summary.csv
-storage/outputs/<run_id>_metrics.csv
-storage/reports/<run_id>_agent_report.json
-storage/reports/<run_id>_agent_report.md
+build command + run command + test command + input mode + timeout
 ```
 
-The summary CSV stores occupancy sessions.
+Example:
 
-The metrics CSV stores frame-level evidence such as IoU, IoCA, chair ID, and occupancy status.
+```json
+{
+  "name": "python-demo",
+  "mode": "command",
+  "workdir": "examples/python_cli",
+  "build_command": "",
+  "run_command": "python app.py {payload}",
+  "test_command": "python -m pytest",
+  "input_mode": "argv",
+  "source_roots": ["."],
+  "timeout_seconds": 5
+}
+```
 
 ---
 
-### 8. Optional LLM-Powered Executive Insights
+### 2. Adversarial Payload Generation
 
-The LLM agent can be enabled through environment variables.
+The Adversary node creates edge-case inputs such as zero values, negative values, very large numbers, empty strings, malformed JSON, nested structures, boundary values, and invalid file payloads.
 
-Supported modes:
+---
 
-- Gemini
-- OpenAI-compatible endpoint
+### 3. Fuzzing Sandbox
 
-The LLM does not replace YOLO or the algorithm.
+The Fuzzing Sandbox runs the target with generated payloads and captures stdout, stderr, exit code, timeout status, failing payload, crash trace, build failures, and test failures.
 
-It only summarizes and explains the output evidence.
+---
+
+### 4. Crash-to-File Mapping
+
+ChaosForge scans source files and tries to map the observed crash to the most likely file and line.
+
+Example output:
+
+```json
+{
+  "mapped_file": "examples/python_cli/finance.py",
+  "mapped_line": 4,
+  "crash_type": "DivisionByZero"
+}
+```
+
+---
+
+### 5. Patch Diff Generation
+
+ChaosForge generates a patch artifact:
+
+```text
+artifacts/runs/<run_id>/patch.diff
+```
+
+This is important because it gives a real engineering artifact, not just a natural language explanation.
+
+---
+
+### 6. Regression Test Generation
+
+ChaosForge creates regression test artifacts inside:
+
+```text
+artifacts/runs/<run_id>/generated_tests/
+```
+
+The goal is to preserve the failing case so the bug does not return later.
+
+---
+
+### 7. Monte Carlo CI Validation
+
+A normal test run can pass once and still be flaky.
+
+ChaosForge runs the validation repeatedly:
+
+```text
+Run 1 passed
+Run 2 passed
+Run 3 passed
+...
+Run 100 passed
+```
+
+If any run fails, it records the failure and marks the fix as unstable.
+
+---
+
+### 8. PR Artifact Generation
+
+ChaosForge generates:
+
+```text
+artifacts/runs/<run_id>/PR_DESCRIPTION.md
+```
+
+The PR artifact includes incident summary, failing payload, crash evidence, mapped source location, patch summary, test results, Monte Carlo CI result, and a human review note.
+
+---
+
+### 9. Web Dashboard
+
+ChaosForge includes a local dashboard for viewing runs.
+
+Run:
+
+```bash
+python apps.py serve
+```
+
+Open:
+
+```text
+http://127.0.0.1:8000
+```
+
+The dashboard helps show the app as a product instead of only a script.
 
 ---
 
@@ -487,22 +353,9 @@ It only summarizes and explains the output evidence.
 ### Step 1: Clone the repository
 
 ```cmd
-git clone https://github.com/YOUR_USERNAME/occupancy-ai-agent-langgraph.git
-cd occupancy-ai-agent-langgraph
+git clone https://github.com/YOUR_USERNAME/chaosforge-autonomous-debugging-engine.git
+cd chaosforge-autonomous-debugging-engine
 ```
-
-If you are using the downloaded ZIP, open PowerShell inside the folder that contains:
-
-```text
-apps.py
-requirements.txt
-core/
-agents/
-templates/
-static/
-```
-
----
 
 ### Step 2: Create virtual environment
 
@@ -511,235 +364,206 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 
----
-
 ### Step 3: Install dependencies
 
 ```cmd
-python -m pip install --upgrade pip setuptools wheel
-python -m pip install --no-cache-dir -r requirements.txt
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-If your environment gives dependency issues, use the minimal requirements file:
+### Step 4: Initialize database
 
 ```cmd
-python -m pip install --no-cache-dir -r requirements-minimal.txt
+python -m chaosforge.db.init_db
+```
+
+### Step 5: Run the built-in Python demo
+
+```cmd
+python apps.py run --contract contracts\python_demo.json --runs 10 --concurrency 2 --no-auth
+```
+
+Expected output:
+
+```json
+{
+  "status": "completed",
+  "crash_found": true,
+  "patch_generated": true
+}
 ```
 
 ---
 
-### Step 4: Install OpenCV if needed
+## How to Run on macOS / Linux
 
-If you see:
+```bash
+git clone https://github.com/YOUR_USERNAME/chaosforge-autonomous-debugging-engine.git
+cd chaosforge-autonomous-debugging-engine
 
-```text
-ModuleNotFoundError: No module named 'cv2'
+python3 -m venv .venv
+source .venv/bin/activate
+
+pip install --upgrade pip
+pip install -r requirements.txt
+
+python3 -m chaosforge.db.init_db
+python3 apps.py run --contract contracts/python_demo.json --runs 10 --concurrency 2 --no-auth
 ```
-
-Run:
-
-```cmd
-python -m pip install opencv-python
-```
-
----
-
-### Step 5: Download or select a YOLO model
-
-Recommended for laptops:
-
-```text
-yolo11n-seg.pt
-```
-
-This is smaller and easier to run than:
-
-```text
-yolo11x-seg.pt
-```
-
-Create a models folder:
-
-```cmd
-mkdir models
-```
-
-Place your model here:
-
-```text
-models/yolo11n-seg.pt
-```
-
-If the automatic download fails, manually download the model in your browser and put it inside the `models/` folder.
-
----
-
-### Step 6: Run the Flask full-stack app
-
-```cmd
-python apps.py
-```
-
-Open:
-
-```text
-http://127.0.0.1:5000
-```
-
-Upload a video from the dashboard.
-
-In the model path field, use:
-
-```text
-models/yolo11n-seg.pt
-```
-
-or:
-
-```text
-yolo11n-seg.pt
-```
-
----
-
-## How to Run From CLI
-
-You can also run without the browser.
-
-Put your video here:
-
-```text
-storage/uploads/input.mp4
-```
-
-Run:
-
-```cmd
-python run.py --video storage\uploads\input.mp4 --model models\yolo11n-seg.pt --output storage\outputs\result.mp4
-```
-
-Expected outputs:
-
-```text
-storage/outputs/result.mp4
-storage/outputs/result_summary.csv
-storage/outputs/result_metrics.csv
-storage/reports/<run_id>_agent_report.json
-storage/reports/<run_id>_agent_report.md
-```
-
----
-
-## How to Enable the LLM Agent
-
-The project works without an LLM.
-
-To enable the Gemini LLM Insight Agent on Windows PowerShell:
-
-```powershell
-$env:OCCUPANCY_LLM_ENABLED="true"
-$env:OCCUPANCY_LLM_PROVIDER="gemini"
-$env:OCCUPANCY_LLM_MODEL="gemini-1.5-flash"
-$env:GEMINI_API_KEY="your_gemini_api_key_here"
-python apps.py
-```
-
-To enable an OpenAI-compatible LLM:
-
-```powershell
-$env:OCCUPANCY_LLM_ENABLED="true"
-$env:OCCUPANCY_LLM_PROVIDER="openai"
-$env:OCCUPANCY_LLM_MODEL="gpt-4o-mini"
-$env:OPENAI_API_KEY="your_openai_api_key_here"
-python apps.py
-```
-
-If no key is provided, the deterministic LangGraph agents still run.
 
 ---
 
 ## Running the Dashboard
 
-```cmd
-python apps.py
+```bash
+python apps.py serve
 ```
 
 Open:
 
 ```text
-http://127.0.0.1:5000
+http://127.0.0.1:8000
 ```
-
-The dashboard lets you:
-
-- Upload a video
-- Enter a YOLO model path
-- Start processing
-- View job status
-- Preview the output video
-- Download CSV files
-- Download AI agent reports
 
 ---
 
-## Running Tests
+## Testing With C / C++ / External Repositories
 
-```cmd
-pytest -q
+For C projects, you need build tools.
+
+On Windows, install MSYS2, MinGW, gcc, and make.
+
+On WSL Ubuntu:
+
+```bash
+sudo apt update
+sudo apt install -y git make gcc g++ python3 python3-venv python3-pip
 ```
 
-Expected result:
+Example C contract:
+
+```json
+{
+  "name": "c-demo",
+  "mode": "compile-run",
+  "workdir": "examples/c_cli",
+  "build_command": "gcc main.c -o main",
+  "run_command": "./main {payload}",
+  "test_command": "./test.sh",
+  "input_mode": "argv",
+  "source_roots": ["."],
+  "timeout_seconds": 5
+}
+```
+
+Run:
+
+```bash
+python apps.py run --contract contracts/c_demo.json --runs 10 --concurrency 2 --no-auth
+```
+
+---
+
+## Testing With Fuzzgoat
+
+Fuzzgoat is a deliberately vulnerable C program used for fuzzing experiments.
+
+Clone it beside ChaosForge:
+
+```bash
+git clone https://github.com/fuzzstati0n/fuzzgoat.git
+```
+
+Folder structure:
 
 ```text
-4 passed
+chaosforge-test-lab/
+  chaosforge_production_app/
+  fuzzgoat/
 ```
+
+Create:
+
+```text
+contracts/fuzzgoat.json
+```
+
+Content:
+
+```json
+{
+  "name": "fuzzgoat",
+  "mode": "compile-run",
+  "workdir": "../fuzzgoat",
+  "build_command": "make",
+  "run_command": "./fuzzgoat {payload_file}",
+  "test_command": "./fuzzgoat .chaosforge_input.txt",
+  "input_mode": "file",
+  "source_roots": ["."],
+  "timeout_seconds": 5
+}
+```
+
+Run:
+
+```bash
+python apps.py run --contract contracts/fuzzgoat.json --runs 20 --concurrency 4 --no-auth
+```
+
+If Windows shows `make is not recognized`, ChaosForge is working, but your system does not have the C build tool installed. Use WSL or install MSYS2/MinGW.
 
 ---
 
 ## Generated Artifacts
 
-Each run creates output files inside:
+Every run creates a folder:
 
 ```text
-storage/outputs/
-storage/reports/
+artifacts/runs/<run_id>/
 ```
 
-Important files:
+Inside it:
 
 ```text
-<run_id>.mp4
-<run_id>_summary.csv
-<run_id>_metrics.csv
-<run_id>_agent_report.json
-<run_id>_agent_report.md
+repository_scan.json
+build_result.json
+payloads.json
+failing_payload.json
+crash_result.json
+crash_trace.txt
+patch.diff
+generated_tests/
+monte_carlo_report.json
+chaosforge_report.json
+PR_DESCRIPTION.md
 ```
 
 The most important files are:
 
 ```text
-output video
-summary CSV
-agent_report.md
+patch.diff
+PR_DESCRIPTION.md
+chaosforge_report.json
 ```
 
-These prove that the system executed the video pipeline and produced human-reviewable AI agent artifacts.
+These prove that the system executed the target and produced engineering artifacts.
 
 ---
 
 ## Example Workflow Output
 
 ```text
-upload_video → Video stored in storage/uploads
-create_job → Job saved in SQLite
-run_occupancy_pipeline → Vision pipeline started
-load_yolo_model → YOLO segmentation model loaded
-calibrate_chairs → Static chair layout learned
-process_frames → Person-chair occupancy logic executed
-save_outputs → Video and CSV artifacts saved
-run_langgraph_agents → Agent workflow executed
-generate_report → Markdown and JSON reports created
-dashboard_preview → Results shown in browser
+load_contract → Target contract loaded
+scan_repository → Source files discovered
+build_target → Build command executed
+generate_payloads → Adversarial inputs generated
+fuzz_target → Target executed with payloads
+crash_check → Crash detected
+map_crash → Crash mapped to source file
+generate_patch → Patch artifact created
+generate_test → Regression test artifact created
+monte_carlo_ci → Repeated validation passed
+final_compile → PR report generated
 ```
 
 Final status:
@@ -753,174 +577,130 @@ completed
 ## Repository Structure
 
 ```text
-occupancy-ai-agent-langgraph/
+chaosforge-autonomous-debugging-engine/
 │
 ├── apps.py
-├── run.py
 ├── requirements.txt
-├── requirements-minimal.txt
 ├── README.md
 ├── Dockerfile
 ├── docker-compose.yml
-├── INSTALL_WINDOWS.md
-├── LANGGRAPH_ARCHITECTURE.md
 │
-├── app/
-│   ├── db.py
-│   ├── main.py
-│   └── pipeline.py
+├── chaosforge/
+│   ├── cli.py
+│   ├── api/
+│   ├── core/
+│   ├── db/
+│   ├── dashboard/
+│   ├── security/
+│   └── workers/
 │
-├── core/
-│   ├── config.py
-│   ├── exceptions.py
-│   ├── occupancy_analyzer.py
-│   └── schemas.py
+├── contracts/
+│   ├── python_demo.json
+│   ├── c_demo.json
+│   └── fuzzgoat.json
 │
-├── agents/
-│   ├── orchestrator.py
-│   ├── diagnosis_agent.py
-│   ├── quality_agent.py
-│   ├── threshold_agent.py
-│   ├── anomaly_agent.py
-│   ├── report_agent.py
-│   ├── llm_client.py
-│   └── llm_insight_agent.py
-│
-├── templates/
-│   ├── index.html
-│   ├── job.html
-│   └── error.html
-│
-├── static/
-│   └── style.css
-│
-├── scripts/
-│   └── original_occupancy_prototype.py
+├── examples/
+│   ├── python_cli/
+│   └── c_cli/
 │
 ├── tests/
 │
-├── models/
-│
-└── storage/
-    ├── uploads/
-    ├── outputs/
-    └── reports/
+└── artifacts/
+    └── runs/
 ```
 
 ---
 
 ## Why This Is More Than a Basic AI Project
 
-A basic computer vision project usually works like this:
+A basic AI project usually works like this:
 
 ```text
-Video → Model → Detection Output
+Prompt → LLM → Answer
 ```
 
-Occupancy AI Agent works like this:
+ChaosForge works like this:
 
 ```text
-Video
-→ YOLO Vision Engine
-→ Spatial Occupancy Reasoning
-→ Temporal Smoothing
-→ Event Logs
-→ Frame-Level Metrics
-→ LangGraph Agent Review
-→ Optional LLM Explanation
-→ Full-Stack Dashboard
-→ Downloadable Reports
+Target Contract
+→ Adversarial Inputs
+→ Real Execution
+→ Crash Evidence
+→ Source Mapping
+→ Patch Artifact
+→ Regression Test
+→ Monte Carlo CI
+→ PR Report
 ```
 
 This makes it a real engineering workflow.
 
-It includes computer vision, agent orchestration, stateful processing, evidence generation, human-readable reporting, dashboard-based usage, and production-style artifact management.
+It includes multi-step agent architecture, tool usage, state transitions, conditional routing, verification loops, real subprocess execution, source-code analysis, CI-style validation, and human-reviewable artifacts.
 
 ---
 
 ## Design Principles
 
-### 1. Vision Engine Before LLM
+### 1. Execution Over Theory
 
-The LLM does not decide occupancy.
+ChaosForge runs the target program. It does not only describe what might happen.
 
-The deterministic YOLO and geometry pipeline makes occupancy decisions.
+### 2. Evidence Before Patch
 
-### 2. Evidence Before Explanation
+The system captures failing payloads, traces, stdout, stderr, and exit codes before generating reports.
 
-The agent layer reads generated artifacts such as metrics CSV, summary CSV, and processing statistics before producing recommendations.
+### 3. Verification Over Guessing
 
-### 3. Agents Improve Reliability
+A patch is only useful if the validation command passes repeatedly.
 
-The agents diagnose problems, score quality, identify anomalies, and recommend review actions.
+### 4. Universal Target Contract
 
-### 4. Human Review Still Matters
+The system is not tied to Python.
 
-The system creates AI-assisted reports, but important workplace decisions should still be reviewed by a human.
+If a program can be built, run, and tested from a command, ChaosForge can analyze it.
 
-### 5. Product Over Script
+### 5. Human Approval
 
-The project includes a dashboard, upload flow, background processing, database records, outputs, reports, CLI, tests, and Docker-ready structure.
+ChaosForge produces PR-ready artifacts, but a human engineer should review before merging.
+
+---
+
+## Current Limitations
+
+ChaosForge is a strong local MVP, but not a commercial SaaS yet.
+
+Current limitations:
+
+- Patch generation is strongest for common crash classes.
+- Deep semantic repair for every language is not fully solved.
+- External repos may need language-specific build tools.
+- Real GitHub OAuth PR creation can be added later.
+- Stronger Docker isolation can be added for untrusted targets.
+- Advanced LLM-based code repair can be integrated as an upgrade.
+
+---
+
+## Future Improvements
+
+Planned upgrades:
+
+- Real GitHub PR creation
+- Docker-based isolated execution
+- Language-specific AST patch engines
+- LLM-powered Code Surgeon
+- Web UI target onboarding
+- Queue workers for long-running jobs
+- OpenTelemetry trace ingestion
+- GitHub Checks integration
+- Advanced flaky test diagnosis
+- Security policy engine
+- Team/user management
+- Hosted deployment mode
 
 ---
 
 
-## Common Errors and Fixes
-
-### Error: No module named cv2
-
-Run:
-
-```cmd
-python -m pip install opencv-python
-```
-
----
-
-### Error: YOLO model download failed
-
-Use a smaller model:
-
-```text
-yolo11n-seg.pt
-```
-
-Or manually download the model and place it inside:
-
-```text
-models/yolo11n-seg.pt
-```
-
-Then use this model path in the dashboard:
-
-```text
-models/yolo11n-seg.pt
-```
-
----
-
-### Error: package hash mismatch
-
-Create a fresh virtual environment and reinstall without cache:
-
-```cmd
-rmdir /s /q .venv
-python -m venv .venv
-.venv\Scripts\activate
-python -m pip install --upgrade pip setuptools wheel
-python -m pip cache purge
-python -m pip install --no-cache-dir -r requirements.txt
-```
-
-If needed:
-
-```cmd
-python -m pip install --no-cache-dir -r requirements-minimal.txt
-```
-
----
 
 ## License
 
 This project is intended for educational, research, and portfolio purposes.
-
