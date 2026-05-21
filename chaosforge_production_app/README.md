@@ -663,57 +663,10 @@ If a program can be built, run, and tested from a command, ChaosForge can analyz
 
 ChaosForge produces PR-ready artifacts, but a human engineer should review before merging.
 
----
 
-## Current Limitations
-
-ChaosForge is a strong local MVP, but not a commercial SaaS yet.
-
-Current limitations:
-
-- Patch generation is strongest for common crash classes.
-- Deep semantic repair for every language is not fully solved.
-- External repos may need language-specific build tools.
-- Real GitHub OAuth PR creation can be added later.
-- Stronger Docker isolation can be added for untrusted targets.
-- Advanced LLM-based code repair can be integrated as an upgrade.
 
 ---
 
-## Future Improvements
-
-Planned upgrades:
-
-- Real GitHub PR creation
-- Docker-based isolated execution
-- Language-specific AST patch engines
-- LLM-powered Code Surgeon
-- Web UI target onboarding
-- Queue workers for long-running jobs
-- OpenTelemetry trace ingestion
-- GitHub Checks integration
-- Advanced flaky test diagnosis
-- Security policy engine
-- Team/user management
-- Hosted deployment mode
-
----
-
-## Resume Bullet
-
-**ChaosForge — Autonomous Debugging & Reliability Engine | Python · FastAPI · SQLite · Fuzzing · Monte Carlo CI · Subprocess Sandboxing**
-
-- Built a production-style autonomous debugging engine that fuzzes executable targets, detects runtime crashes, maps failures to source code, generates patch/test artifacts, and produces PR-ready reports.
-- Designed a universal target contract supporting Python, C, C++, Java, Node, Go, Rust, CLI tools, APIs, and repository-level test commands through build/run/test adapters.
-- Implemented repeated Monte Carlo CI validation, persistent run history, web dashboard, source scanning, crash evidence capture, and human-reviewable engineering artifacts.
-
----
-
-## Interview Explanation
-
-> ChaosForge is an autonomous debugging engine. Instead of only generating code from prompts, it executes real software targets using a universal target contract. It generates adversarial payloads, runs them against the program, captures crashes and stack traces, maps failures to source files, generates patch and regression artifacts, and validates the result through repeated Monte Carlo CI runs. The final output is a PR-style report that a human engineer can review. The project demonstrates agentic workflow design, fuzzing, software testing, source-code analysis, subprocess sandboxing, and production-style developer tooling.
-
----
 
 ## License
 
