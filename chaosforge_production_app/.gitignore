@@ -1,0 +1,14 @@
+.venv/
+.venv_wsl/
+__pycache__/
+*.pyc
+.env
+.env.local
+artifacts/
+.chaosforge/
+*.db
+*.sqlite
+*.sqlite3
+.DS_Store
+.vscode/
+.idea/

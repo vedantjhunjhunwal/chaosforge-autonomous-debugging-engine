@@ -1,0 +1,12 @@
+
+{
+  "name": "vulnpy",
+  "mode": "repo-test",
+  "workdir": "../vulnpy",
+  "build_command": "python -m pip install -e .",
+  "run_command": "python -m pytest",
+  "test_command": "python -m pytest",
+  "input_mode": "none",
+  "source_roots": ["."],
+  "timeout_seconds": 30
+}

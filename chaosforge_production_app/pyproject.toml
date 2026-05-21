@@ -1,0 +1,9 @@
+[project]
+name = "chaosforge-production-app"
+version = "1.0.0"
+description = "Production-style autonomous debugging engine"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

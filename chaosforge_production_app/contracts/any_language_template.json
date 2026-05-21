@@ -1,0 +1,12 @@
+{
+  "name": "my-service",
+  "mode": "compile-run",
+  "workdir": ".",
+  "build_command": "YOUR_BUILD_COMMAND_OR_EMPTY",
+  "run_command": "YOUR_RUN_COMMAND {payload}",
+  "test_command": "YOUR_TEST_COMMAND_OR_EMPTY",
+  "source_files": ["path/to/source/file.ext"],
+  "payload_channel": "argv",
+  "timeout_seconds": 5,
+  "success_exit_code": 0
+}
