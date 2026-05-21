@@ -353,7 +353,7 @@ The dashboard helps show the app as a product instead of only a script.
 ### Step 1: Clone the repository
 
 ```cmd
-git clone https://github.com/YOUR_USERNAME/chaosforge-autonomous-debugging-engine.git
+git clone https://github.com/vedantjhunjhunwal/chaosforge-autonomous-debugging-engine.git
 cd chaosforge-autonomous-debugging-engine
 ```
 
