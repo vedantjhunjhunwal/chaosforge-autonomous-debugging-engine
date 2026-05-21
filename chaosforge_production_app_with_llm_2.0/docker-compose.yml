@@ -1,0 +1,11 @@
+services:
+  chaosforge:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - CHAOSFORGE_SECRET_KEY=dev-secret-change-me
+      - DATABASE_URL=sqlite:///./chaosforge.db
+      - ARTIFACT_ROOT=artifacts
+    volumes:
+      - ./artifacts:/app/artifacts

@@ -1,0 +1,12 @@
+{
+  "name": "c-finance-demo",
+  "mode": "compile-run",
+  "workdir": "examples/c_cli",
+  "build_command": "gcc main.c -o main",
+  "run_command": "./main {payload}",
+  "test_command": "./test.sh",
+  "source_files": ["main.c"],
+  "payload_channel": "argv",
+  "timeout_seconds": 5,
+  "success_exit_code": 0
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <title>ChaosForge Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <h1>ChaosForge</h1>
+      <p>Autonomous debugging engine for executable software targets.</p>
+    </section>
+    <section class="card">
+      <h2>Recent Runs</h2>
+      <table>
+        <thead><tr><th>ID</th><th>Target</th><th>Status</th><th>Crash</th><th>Mapped Location</th><th>CI</th><th>Artifacts</th></tr></thead>
+        <tbody>
+        {% for r in runs %}
+          <tr>
+            <td>{{ r.id }}</td>
+            <td>{{ r.target_name }}</td>
+            <td><span class="pill">{{ r.status }}</span></td>
+            <td>{{ r.crash_type if r.crash_found else "-" }}</td>
+            <td>{{ r.mapped_location }}</td>
+            <td>{{ r.ci_passes }}/{{ r.ci_total }}</td>
+            <td>{{ r.artifact_dir }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    <section class="card">
+      <h2>API Usage</h2>
+      <pre>python apps.py run --contract contracts/python_demo.json --runs 10 --concurrency 2</pre>
+    </section>
+  </main>
+</body>
+</html>

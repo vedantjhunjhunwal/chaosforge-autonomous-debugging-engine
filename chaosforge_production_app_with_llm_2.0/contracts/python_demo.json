@@ -1,0 +1,12 @@
+{
+  "name": "python-finance-demo",
+  "mode": "command",
+  "workdir": ".",
+  "build_command": "",
+  "run_command": "python examples/python_cli/finance_cli.py {payload}",
+  "test_command": "python examples/python_cli/test_finance.py",
+  "source_files": ["examples/python_cli/finance.py"],
+  "payload_channel": "argv",
+  "timeout_seconds": 5,
+  "success_exit_code": 0
+}
